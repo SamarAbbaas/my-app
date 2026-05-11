@@ -78,11 +78,8 @@ export default function LoginPage() {
       </div>
       <footer className="absolute bottom-0 w-full">
         <div className="flex justify-end p-3 gap-3 items-center text-muted-foreground">
-              <div className="h-3 w-3 bg-primary rounded-full animate-pulse"></div>
-          <p className="flex gap-2 items-center ">
-        
-            SERVER: ONLINE
-          </p>
+          <div className="h-3 w-3 bg-primary rounded-full animate-pulse"></div>
+          <p className="flex gap-2 items-center ">SERVER: ONLINE</p>
           <p>ENCRYPTED NODE: TLS 1.3</p>
         </div>
       </footer>
