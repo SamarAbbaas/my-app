@@ -27,6 +27,7 @@ interface Product {
   sku: string;
   price: number;
   stockLevel: number;
+  Category?: string;
   Action?: string;
 }
 const products: Product[] = [
@@ -38,6 +39,7 @@ const products: Product[] = [
     sku: "WH-1000XM4",
     price: 349.99,
     stockLevel: 25,
+    Category:"Electronics",
     Action:" ",
   },
   {
@@ -47,7 +49,9 @@ const products: Product[] = [
       ProductImage: "https://example.com/images/smartphone.jpg",
     sku: "SM-G991B",
     price: 799.99,
+
     stockLevel: 10,
+    Category:"Electronics",
      Action:" ",
   },
   {
@@ -58,6 +62,7 @@ const products: Product[] = [
     sku: "XPS-13",
     price: 999.99,
     stockLevel: 5,
+    Category:"Computers",
      Action:" ",
   },
   {
@@ -68,6 +73,7 @@ const products: Product[] = [
     sku: "SW-5000",
     price: 199.99,
     stockLevel: 15,
+    Category:"Wearables",
      Action:" ",
   }
 ];  
@@ -186,11 +192,30 @@ export default function InventoryPage() {
                               <TableCell>${product.price.toFixed(2)}</TableCell>
                               {/* <TableCell>{product.sku}</TableCell> */}
                               <TableCell>{product.stockLevel}</TableCell>
+                                <TableCell>{product.Category}</TableCell>
                             <TableCell>{product.Action}</TableCell>
                               </TableRow>
                         ))}
           </TableBody>
       </Table>
+      <div>
+        <div className=" flex  flex-start   mt-4 rounded-lg   p-2 bg-muted-foreground/20 w-full gap-4">
+                         <Icon icon="ph:sparkle-bold" width="50" height="50"  className=" p-2 bg-primary/20"/>
+
+                 
+              
+               <div className="flex flex-col items-center">
+                 <h1 className="text-sm   font-inter font-bold">
+               Inventory Intelligence
+                </h1>
+                <br />
+                <p className="text-xs text-muted-foreground pb-5 -mt-3">
+               AI suggests restocking 4 items based on next week's sales forecast.
+                </p>
+               </div>
+               
+              </div>
+      </div>
       </div>
       
     </>
