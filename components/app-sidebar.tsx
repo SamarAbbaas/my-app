@@ -11,13 +11,14 @@ import {
 } from "@/components/ui/sidebar"
 import { LayoutDashboard, Receipt, Package, Settings, Store } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 export function AppSidebar() {
   return (
     <Sidebar variant="sidebar" className="bg-[#111111] text-zinc-400 border-none">
       {/* Header section with branding */}
       <SidebarHeader className="p-6">
-        <h1 className="text-3xl font-bold tracking-tight text-[#00E5FF] italic flex items-center gap-2">
+        <h1 className="text-3xl font-bold tracking-tight text-[#00E5FF]   flex items-center gap-2">
           Electric POS
         </h1>
         <p className="text-xs font-medium text-zinc-500 tracking-wider">V2.0 PRECISION</p>
@@ -51,7 +52,8 @@ export function AppSidebar() {
               <SidebarMenuItem>
                 <SidebarMenuButton className="py-6 rounded-md hover:bg-[#1C1C1C] hover:text-white transition-colors">
                   <Package className="size-5 shrink-0" />
-                  <span className="text-lg">Inventory</span>
+                  {/* <span className="text-lg">Inventory</span> */}
+                  <Link href="/Inventory" className="text-lg">Inventory</Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
 

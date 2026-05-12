@@ -171,23 +171,27 @@ export default function DashboardPage() {
           {/* content */}
           <h1 className="uppercase text-red-300  text-xs">INVENTORY ALERT</h1>
           <h1 className="font-bold mb-4 h-2   text-3xl">04 Items</h1>
-          <p className="flex items-center gap-1 text-muted-foreground text-xs">
-            Critical stock levels reached
+          <p className="flex items-center gap-2 text-muted-foreground text-sm font-bold mt-8">
+            Critical <br/> stock <br/> levels reached
           </p>
           <Link
-            className="text-red-300 inline-flex items-center gap-2"
+            className="text-red-300 inline-flex flex-inline gap-2 mt-4 items-center"
             href={"#"}
           >
             Restock Now <Icon icon="ep:right" width="16" height="16" />
           </Link>
         </div>
       </div>
+      {/* table and quick actions */}
       <div className="flex mt-4 p-6">
         <div className="     rounded-lg w-full max-w-4xl    gap-4 flex-1 min-w-8/12 ">
           <div className="flex items-center justify-between px-4 py-2 w-70vw  ">
             <h1 className="  font-bold  ">Recent Transactions</h1>
-            <button className="text-primary">view all report</button>
-          </div>
+            <Link href={"#"} className="text-primary">
+              view all report
+            </Link>
+           </div>
+           {/* Table */}
           <div className="rounded-lg overflow-hidden border border-muted-foreground/50 ">
             <Table className="p-4">
               <TableHeader className="p-4">
@@ -248,17 +252,20 @@ export default function DashboardPage() {
           </div>
         </div>
         <div className="flex  flex-col gap-3   px-4 py-2 w-full ">
-          <h1>Quik Actions </h1>
+          <h1 className="font-extrabold">Quik Actions </h1>
+          {/* Link 1 */}
           <Link
             className="   flex justify-between w-full items-center gap-2 bg-muted-foreground/20 p-4 rounded-lg"
             href={"#"}
           >
             <div className="flex items-center gap-4 ">
-              <div className="rounded-lg bg-primary/20 p-2 text-primary">
-                <Icon icon="ic:round-point-of-sale" width="24" height="24"  />
+              <div className=" rounded-sm bg-primary/20 p-2 text-primary">
+                <Icon icon="ic:round-point-of-sale" width="24" height="24" />
               </div>
               <div>
-                <h1 className="text-sm font-medium">Open terminal </h1>
+                <h1 className="text-sm   font-inter font-bold">
+                  Open terminal{" "}
+                </h1>
                 <p className="text-xs text-muted-foreground">
                   Station #04 Active{" "}
                 </p>
@@ -266,51 +273,66 @@ export default function DashboardPage() {
             </div>
             <Icon icon="formkit:right" width="7" height="16" />
           </Link>
-           <Link
+          {/* Link 2 */}
+          <Link
             className="   flex justify-between w-full items-center gap-2 bg-muted-foreground/20 p-4 rounded-lg"
             href={"#"}
           >
             <div className="flex items-center gap-4 ">
-              <div className="rounded-lg bg-primary/20 p-2 text-primary">
-                <Icon icon="ic:round-point-of-sale" width="24" height="24"  />
+              <div className="rounded-sm  bg-primary/20 p-2 text-primary  ">
+                <Icon
+                  icon="fluent:tasks-app-20-regular"
+                  width="20"
+                  height="20"
+                />{" "}
               </div>
               <div>
-                <h1 className="text-sm font-medium">Open terminal </h1>
+                <h1 className="text-sm  font-inter font-bold">
+                  Adjust Inventory{" "}
+                </h1>
                 <p className="text-xs text-muted-foreground">
-                  Station #04 Active{" "}
+                  Quick stock update
                 </p>
               </div>
             </div>
             <Icon icon="formkit:right" width="7" height="16" />
           </Link>
-           <Link
+          {/* Link 3 */}
+          <Link
             className="   flex justify-between w-full items-center gap-2 bg-muted-foreground/20 p-4 rounded-lg"
             href={"#"}
           >
             <div className="flex items-center gap-4 ">
-              <div className="rounded-lg bg-primary/20 p-2 text-primary">
-                <Icon icon="ic:round-point-of-sale" width="24" height="24"  />
+              <div className="rounded-sm  bg-primary/20 p-2 text-primary">
+                <Icon
+                  icon="material-symbols-light:print-outline-rounded"
+                  width="24"
+                  height="24"
+                />{" "}
               </div>
               <div>
-                <h1 className="text-sm font-medium">Open terminal </h1>
+                <h1 className="text-sm   font-inter font-bold">
+                  Print End of Day
+                </h1>
                 <p className="text-xs text-muted-foreground">
-                  Station #04 Active{" "}
+                  Z-Report generation
                 </p>
               </div>
             </div>
             <Icon icon="formkit:right" width="7" height="16" />
           </Link>
-          <div className="flex  flex-col  w-full  gap-2 bg-primary/5 p-4 rounded-2xl border-[0.5] border-primary/50">
-             <div className="flex items-center gap-4 ">
-              <div className="h-3 w-3 bg-green-400 rounded-full animate-pulse"></div>
-                       <p className="   items-center uppercase text-green-400 ">System ONLINE</p>
-             </div>
-              <p>
-                Current load
+          <div className="flex  flex-col  w-full  gap-6 bg-primary/5 p-4 rounded-2xl border-[0.5] border-primary/50">
+            <div className="flex items-center gap-4 ">
+              <div className="h-3 w-3 bg-green-400 rounded-full animate-pulse mt-4"></div>
+              <p className="   items-center uppercase text-green-400 mt-4 ">
+                System ONLINE
               </p>
-                <Progress  value={40} className="w-[60%]" />
-            <p className="text-muted-foreground text-xs">Syncing to Cloud Engine...</p>
-
+            </div>
+            <p className="mt-4 text-muted-foreground ">Current load</p>
+            <Progress value={40} className="w-[60%] mb-4" />
+            <p className="text-muted-foreground text-xs">
+              Syncing to Cloud Engine...
+            </p>
           </div>
         </div>
       </div>
