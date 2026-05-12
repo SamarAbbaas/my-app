@@ -211,14 +211,16 @@ export default function InventoryPage() {
                 </h1>
                 <br />
                 <p className="text-xs text-muted-foreground pb-5 -mt-3">
-               AI suggests restocking 4 items based on next week's sales forecast.
+               AI suggests restocking 4 items based on next    sales forecast.
                 </p>
                </div>
-                <Link
+              <div>
+                  <Link
               href="/inventory/recommendations"
-              className="  flex   items-center justify-baseline  text-primary        text-sm  ">
+              className="  flex   items-center justify-baseline  text-primary   ">
                  Review Recommendations  <ArrowRightIcon />
             </Link>
+              </div>
               </div>
       </div>
       </div>
