@@ -216,7 +216,7 @@ export default function InventoryPage() {
                </div>
                 <Link
               href="/inventory/recommendations"
-              className="  flex   items-center justify-between  text-primary        text-sm  ">
+              className="  flex   items-center justify-baseline  text-primary        text-sm  ">
                  Review Recommendations  <ArrowRightIcon />
             </Link>
               </div>
