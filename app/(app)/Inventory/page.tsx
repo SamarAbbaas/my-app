@@ -19,6 +19,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { ArrowRightIcon } from "lucide-react";
 interface Product {
   id: number;
   name: string;
@@ -213,7 +214,11 @@ export default function InventoryPage() {
                AI suggests restocking 4 items based on next week's sales forecast.
                 </p>
                </div>
-               
+                <Link
+              href="/inventory/recommendations"
+              className="  flex   items-center justify-between  text-primary        text-sm  ">
+                 Review Recommendations  <ArrowRightIcon />
+            </Link>
               </div>
       </div>
       </div>
