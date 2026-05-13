@@ -15,6 +15,7 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from "@/components/ui/input-group";
+import ThemeToggle from "./theme-toggle";
 // import { Dialog } from "@base-ui/react";
 export default function Navbar() {
   return (
@@ -27,7 +28,9 @@ export default function Navbar() {
           <InputGroupAddon align="inline-end"></InputGroupAddon>
         </InputGroup>
       </div>
+
       <div className="flex gap-4   right-10 top-8">
+        <ThemeToggle />
         <Dialog>
           <DialogTrigger
             render={

@@ -141,7 +141,7 @@ export default function InventoryPage() {
                   />
                   Add Product
               </DialogTrigger>
-              <DialogContent className="sm:max-w-[425px] bg-[#1a1a1a] text-white">
+              <DialogContent className="sm:max-w-[425px] bg-muted text-white">
                 <DialogHeader>
                   <DialogTitle>Add New Product</DialogTitle>
                 </DialogHeader>
@@ -159,28 +159,28 @@ export default function InventoryPage() {
           </div>
         </div>
         <div className="flex flex-wrap gap-6 justify-between mr-24 p-6   ">
-          <div className="relative bg-[#1a1a1a]  border-primary w-60 p-8 rounded-xl overflow-hidden shadow-lg border-l-[6px]">
+          <div className="relative bg-muted  border-primary w-60 p-8 rounded-xl overflow-hidden shadow-lg border-l-[6px]">
             <p className="text-muted-foreground  font-inter  font-bold">
               TOTAL ITEMS
             </p>
             <h1 className="text-2xl font-extrabold">1,284</h1>
           </div>
 
-          <div className="relative bg-[#1a1a1a]  border-yellow-300 w-60 p-8 rounded-xl overflow-hidden shadow-lg border-l-[6px]">
+          <div className="relative  bg-muted border-yellow-300 w-60 p-8 rounded-xl overflow-hidden shadow-lg border-l-[6px]">
             <p className="text-muted-foreground  font-inter  font-bold">
               LOW STOCK
             </p>
             <h1 className="text-2xl text-yellow-300 font-extrabold">12</h1>
           </div>
 
-          <div className="relative bg-[#1a1a1a]  border-[#ff64ab] w-60 p-8 rounded-xl overflow-hidden shadow-lg border-l-[6px]">
+          <div className="relative   bg-muted border-[#ff64ab] w-60 p-8 rounded-xl overflow-hidden shadow-lg border-l-[6px]">
             <p className="text-muted-foreground  font-inter  font-bold">
               OUT OF STOCK
             </p>
             <h1 className="text-2xl text-[#ffb4ab] font-extrabold">03</h1>
           </div>
 
-          <div className="relative bg-[#1a1a1a]   border-[#c1c8ca] w-60 p-8 rounded-xl overflow-hidden shadow-lg border-l-[6px]">
+          <div className="relative bg-muted   border-[#c1c8ca] w-60 p-8 rounded-xl overflow-hidden shadow-lg border-l-[6px]">
             <p className="text-muted-foreground  font-inter  font-bold">
               TOTAL VALUATION
             </p>
