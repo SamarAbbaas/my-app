@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -20,6 +21,12 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { ArrowRightIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import productData from "./data.json";
+
 interface Product {
   id: number;
   name: string;
@@ -31,55 +38,47 @@ interface Product {
   Category?: string;
   Action?: string;
 }
-const products: Product[] = [
-  {
-    id: 1,
-    name: "Wireless Headphones",
-    span: "Titanium Blue, 256GB",
-    ProductImage: "https://example.com/images/headphones.jpg",
-    sku: "WH-1000XM4",
-    price: 349.99,
-    stockLevel: 25,
-    Category: "Electronics",
-    Action: " ",
-  },
-  {
-    id: 2,
-    name: "Smartphone",
-    span: "Graphite, 128GB",
-    ProductImage: "https://example.com/images/smartphone.jpg",
-    sku: "SM-G991B",
-    price: 799.99,
-
-    stockLevel: 10,
-    Category: "Electronics",
-    Action: " ",
-  },
-  {
-    id: 3,
-    name: "Laptop",
-    span: "Silver, 16GB RAM",
-    ProductImage: "https://example.com/images/laptop.jpg",
-    sku: "XPS-13",
-    price: 999.99,
-    stockLevel: 5,
-    Category: "Computers",
-    Action: " ",
-  },
-  {
-    id: 4,
-    name: "Smartwatch",
-    span: "Ocean Band ,Orange",
-    ProductImage: "https://example.com/images/smartwatch.jpg",
-    sku: "SW-5000",
-    price: 199.99,
-    stockLevel: 15,
-    Category: "Wearables",
-    Action: " ",
-  },
-];
 
 export default function InventoryPage() {
+  const [products, setProducts] = useState<Product[]>(productData);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+  // Filter
+  const filteredProducts = products.filter(p => 
+    p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    p.Category?.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+  
+  // Pagination
+  const totalItems = filteredProducts.length;
+  const totalPages = Math.ceil(totalItems / itemsPerPage) || 1;
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const paginatedProducts = filteredProducts.slice(startIndex, startIndex + itemsPerPage);
+
+  const handlePageChange = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+    }
+  };
+
+  const handleAddProduct = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const newProduct: Product = {
+      id: products.length + 1,
+      name: formData.get("name") as string,
+      span: formData.get("span") as string,
+      sku: formData.get("sku") as string,
+      price: parseFloat(formData.get("price") as string),
+      stockLevel: parseInt(formData.get("stockLevel") as string),
+      Category: formData.get("category") as string,
+      Action: " ",
+    };
+    setProducts([newProduct, ...products]);
+  };
   return (
     <>
       <div className="flex flex-col  p-4 ml-4  max-w-600 overflow-x-hidden">
@@ -113,23 +112,53 @@ export default function InventoryPage() {
         </div>
         <div className="flex justify-between items-center   mb-4">
           <h1 className="font-bold text-3xl">Product Catalog</h1>
-          <div className="flex gap-4">
-            <button className="flex rounded-lg gap-1 mt-2 bg-muted-foreground/20 p-4">
+          <div className="flex gap-4 items-center">
+            {isFilterOpen && (
+              <Input
+                placeholder="Search..."
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  setCurrentPage(1);
+                }}
+                className="w-48 bg-transparent"
+              />
+            )}
+            <Button 
+              className="flex gap-1 text-white bg-muted-foreground/20 p-6"
+              onClick={() => setIsFilterOpen(!isFilterOpen)}
+            >
               {" "}
               <Icon icon="mynaui:filter" width="24" height="24" />
               Filter
-            </button>
-            <button className="bg-primary mr-4 rounded p-4  flex text-black font-bold">
-              <Icon
-                icon="material-symbols-light:add-circle-outline-rounded"
-                width="24"
-                height="24"
-              />
-              Add Product
-            </button>
+            </Button>
+            <Dialog>
+              <DialogTrigger className="bg-primary rounded p-3  flex text-secondary-foreground font-bold items-center gap-1">
+                  <Icon
+                    icon="material-symbols-light:add-circle-outline-rounded"
+                    width="24"
+                    height="24"
+                  />
+                  Add Product
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[425px] bg-[#1a1a1a] text-white">
+                <DialogHeader>
+                  <DialogTitle>Add New Product</DialogTitle>
+                </DialogHeader>
+                <form onSubmit={handleAddProduct} className="flex flex-col gap-4">
+                  <Input name="name" placeholder="Product Name" required className="bg-transparent" />
+                  <Input name="span" placeholder="Variant (e.g. Blue, 128GB)" required className="bg-transparent" />
+                  <Input name="sku" placeholder="SKU" required className="bg-transparent" />
+                  <Input name="price" placeholder="Price" type="number" step="0.01" required className="bg-transparent" />
+                  <Input name="stockLevel" placeholder="Stock Level" type="number" required className="bg-transparent" />
+                  <Input name="category" placeholder="Category" required className="bg-transparent" />
+                  <Button type="submit" className="w-full bg-primary text-secondary-foreground font-bold font-inter mt-2">Create Product</Button>
+                </form>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
-        <div className="flex flex-wrap gap-6 justify-between mr-24 p-6 min-w-screen  ">
+        <div className="flex flex-wrap gap-6 justify-between mr-24 p-6   ">
           <div className="relative bg-[#1a1a1a]  border-primary w-60 p-8 rounded-xl overflow-hidden shadow-lg border-l-[6px]">
             <p className="text-muted-foreground  font-inter  font-bold">
               TOTAL ITEMS
@@ -160,20 +189,21 @@ export default function InventoryPage() {
             </h1>
           </div>
         </div>
-        <Table className="p-4">
+         <div className=" bg-muted-foreground/20 rounded-lg overflow-hidden border border-muted-foreground/50 ">
+          <Table className="p-4">
           <TableHeader className="p-4">
-            <TableRow>
+            <TableRow >
               <TableHead>PRODUCT</TableHead>
               <TableHead>SKU / ID</TableHead>
               <TableHead>PRICE</TableHead>
               <TableHead>CATEGORY</TableHead>
-              <TableHead className="flex flex-col">STOCKLEVEL</TableHead>
-              <TableHead className="flex flex-col">ACTION</TableHead>
+              <TableHead>STOCKLEVEL</TableHead>
+              <TableHead>ACTION</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {products.map((product) => (
-              <TableRow key={product.name}>
+            {paginatedProducts.map((product) => (
+              <TableRow key={product.id}>
                 <TableCell className="flex items-center gap-2">
                   {" "}
                   <Avatar>
@@ -202,10 +232,61 @@ export default function InventoryPage() {
               </TableRow>
             ))}
           </TableBody>
+
         </Table>
+        <div className="flex justify-between p-4">
+          <div>
+            <h1 className="text-muted-foreground">
+              Showing <span className="text-white">{totalItems === 0 ? 0 : startIndex + 1}-{Math.min(startIndex + itemsPerPage, totalItems)}</span> of <span className="text-white">{totalItems}</span> products
+            </h1> 
+          </div>
+          <div>
+            <Pagination>
+              <PaginationContent>
+                <PaginationItem>
+                  <PaginationPrevious 
+                    href="#" 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handlePageChange(currentPage - 1);
+                    }} 
+                    className={currentPage === 1 ? "pointer-events-none opacity-50" : ""}
+                  />
+                </PaginationItem>
+                
+                {Array.from({ length: totalPages }).map((_, index) => (
+                  <PaginationItem key={index}>
+                    <PaginationLink 
+                      href="#" 
+                      isActive={currentPage === index + 1}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handlePageChange(index + 1);
+                      }}
+                    >
+                      {index + 1}
+                    </PaginationLink>
+                  </PaginationItem>
+                ))}
+
+                <PaginationItem>
+                  <PaginationNext 
+                    href="#" 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handlePageChange(currentPage + 1);
+                    }} 
+                    className={currentPage === totalPages ? "pointer-events-none opacity-50" : ""}
+                  />
+                </PaginationItem>
+              </PaginationContent>
+            </Pagination>
+          </div>
+        </div>
+         </div>
         
-        <div>
-          <div className="flex items-center gap-4">
+        <div className="border border-muted-foreground/50  bg-muted-foreground/20 rounded-lg p-6 mt-6">
+          <div className="flex items-center gap-4  ">
             <div className="bg-primary/10 p-2.5 rounded-xl border border-primary/20">
               <Icon
                 icon="ph:sparkle-bold"
@@ -224,7 +305,7 @@ export default function InventoryPage() {
           </div>
           <Link
             href="/inventory/recommendationeded"
-            className="text-xs font-bold text-primary flex items-center gap-2 hover:opacity-80"
+            className="text-xs font-bold text-primary flex items-center gap-2  "
           >
             Review Recommendations <ArrowRightIcon size={14} />
           </Link></div>

@@ -1,0 +1,134 @@
+[
+  {
+    "id": 1,
+    "name": "Wireless Headphones",
+    "span": "Titanium Blue, 256GB",
+    "ProductImage": "https://example.com/images/headphones.jpg",
+    "sku": "WH-1000XM4",
+    "price": 349.99,
+    "stockLevel": 25,
+    "Category": "Electronics",
+    "Action": " "
+  },
+  {
+    "id": 2,
+    "name": "Smartphone",
+    "span": "Graphite, 128GB",
+    "ProductImage": "https://example.com/images/smartphone.jpg",
+    "sku": "SM-G991B",
+    "price": 799.99,
+    "stockLevel": 10,
+    "Category": "Electronics",
+    "Action": " "
+  },
+  {
+    "id": 3,
+    "name": "Laptop",
+    "span": "Silver, 16GB RAM",
+    "ProductImage": "https://example.com/images/laptop.jpg",
+    "sku": "XPS-13",
+    "price": 999.99,
+    "stockLevel": 5,
+    "Category": "Computers",
+    "Action": " "
+  },
+  {
+    "id": 4,
+    "name": "Smartwatch",
+    "span": "Ocean Band, Orange",
+    "ProductImage": "https://example.com/images/smartwatch.jpg",
+    "sku": "SW-5000",
+    "price": 199.99,
+    "stockLevel": 15,
+    "Category": "Wearables",
+    "Action": " "
+  },
+  {
+    "id": 5,
+    "name": "Tablet",
+    "span": "Space Gray, 64GB",
+    "ProductImage": "https://example.com/images/tablet.jpg",
+    "sku": "TB-APL01",
+    "price": 499.99,
+    "stockLevel": 30,
+    "Category": "Electronics",
+    "Action": " "
+  },
+  {
+    "id": 6,
+    "name": "Gaming Monitor",
+    "span": "27-inch, 144Hz",
+    "ProductImage": "https://example.com/images/monitor.jpg",
+    "sku": "GM-27A",
+    "price": 299.99,
+    "stockLevel": 8,
+    "Category": "Computers",
+    "Action": " "
+  },
+  {
+    "id": 7,
+    "name": "Mechanical Keyboard",
+    "span": "RGB, Blue Switches",
+    "ProductImage": "https://example.com/images/keyboard.jpg",
+    "sku": "KB-M100",
+    "price": 129.99,
+    "stockLevel": 45,
+    "Category": "Accessories",
+    "Action": " "
+  },
+  {
+    "id": 8,
+    "name": "Wireless Mouse",
+    "span": "Ergonomic, Black",
+    "ProductImage": "https://example.com/images/mouse.jpg",
+    "sku": "MS-W200",
+    "price": 49.99,
+    "stockLevel": 60,
+    "Category": "Accessories",
+    "Action": " "
+  },
+  {
+    "id": 9,
+    "name": "Bluetooth Speaker",
+    "span": "Waterproof, Red",
+    "ProductImage": "https://example.com/images/speaker.jpg",
+    "sku": "SP-B300",
+    "price": 89.99,
+    "stockLevel": 20,
+    "Category": "Audio",
+    "Action": " "
+  },
+  {
+    "id": 10,
+    "name": "External Hard Drive",
+    "span": "2TB, HDD",
+    "ProductImage": "https://example.com/images/hdd.jpg",
+    "sku": "HD-E2TB",
+    "price": 79.99,
+    "stockLevel": 12,
+    "Category": "Storage",
+    "Action": " "
+  },
+  {
+    "id": 11,
+    "name": "Webcam",
+    "span": "1080p, Auto Focus",
+    "ProductImage": "https://example.com/images/webcam.jpg",
+    "sku": "WC-1080",
+    "price": 59.99,
+    "stockLevel": 35,
+    "Category": "Accessories",
+    "Action": " "
+  },
+  {
+    "id": 12,
+    "name": "Microphone",
+    "span": "Condenser, USB",
+    "ProductImage": "https://example.com/images/mic.jpg",
+    "sku": "MC-U500",
+    "price": 149.99,
+    "stockLevel": 18,
+    "Category": "Audio",
+    "Action": " "
+  }
+]
