@@ -10,7 +10,7 @@ import {
 // import { Table } from "@/components/ui/table";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Table,
   TableBody,
@@ -23,8 +23,8 @@ import { ArrowRightIcon } from "lucide-react";
 interface Product {
   id: number;
   name: string;
-  span:string;
-    ProductImage?: string;
+  span: string;
+  ProductImage?: string;
   sku: string;
   price: number;
   stockLevel: number;
@@ -35,54 +35,54 @@ const products: Product[] = [
   {
     id: 1,
     name: "Wireless Headphones",
-    span:"Titanium Blue, 256GB",
+    span: "Titanium Blue, 256GB",
     ProductImage: "https://example.com/images/headphones.jpg",
     sku: "WH-1000XM4",
     price: 349.99,
     stockLevel: 25,
-    Category:"Electronics",
-    Action:" ",
+    Category: "Electronics",
+    Action: " ",
   },
   {
     id: 2,
     name: "Smartphone",
-    span:"Graphite, 128GB",
-      ProductImage: "https://example.com/images/smartphone.jpg",
+    span: "Graphite, 128GB",
+    ProductImage: "https://example.com/images/smartphone.jpg",
     sku: "SM-G991B",
     price: 799.99,
 
     stockLevel: 10,
-    Category:"Electronics",
-     Action:" ",
+    Category: "Electronics",
+    Action: " ",
   },
   {
     id: 3,
     name: "Laptop",
-    span:"Silver, 16GB RAM",
-      ProductImage: "https://example.com/images/laptop.jpg",
+    span: "Silver, 16GB RAM",
+    ProductImage: "https://example.com/images/laptop.jpg",
     sku: "XPS-13",
     price: 999.99,
     stockLevel: 5,
-    Category:"Computers",
-     Action:" ",
+    Category: "Computers",
+    Action: " ",
   },
   {
     id: 4,
     name: "Smartwatch",
-    span:"Ocean Band ,Orange",
+    span: "Ocean Band ,Orange",
     ProductImage: "https://example.com/images/smartwatch.jpg",
     sku: "SW-5000",
     price: 199.99,
     stockLevel: 15,
-    Category:"Wearables",
-     Action:" ",
-  }
-];  
+    Category: "Wearables",
+    Action: " ",
+  },
+];
 
 export default function InventoryPage() {
   return (
     <>
-      <div className="flex flex-col  p-4 ml-4  overflow-hidden">
+      <div className="flex flex-col  p-4 ml-4  max-w-600 overflow-x-hidden">
         <div className=" ">
           <Breadcrumb>
             <BreadcrumbList>
@@ -114,14 +114,14 @@ export default function InventoryPage() {
         <div className="flex justify-between items-center   mb-4">
           <h1 className="font-bold text-3xl">Product Catalog</h1>
           <div className="flex gap-4">
-            <button className="flex gap-1 mt-2 bg-muted-foreground/20 p-4">
+            <button className="flex rounded-lg gap-1 mt-2 bg-muted-foreground/20 p-4">
               {" "}
               <Icon icon="mynaui:filter" width="24" height="24" />
               Filter
             </button>
             <button className="bg-primary mr-4 rounded p-4  flex text-black font-bold">
               <Icon
-                icon="material-symbols-light:add-rounded"
+                icon="material-symbols-light:add-circle-outline-rounded"
                 width="24"
                 height="24"
               />
@@ -160,71 +160,76 @@ export default function InventoryPage() {
             </h1>
           </div>
         </div>
-         <Table className="p-4">
-        <TableHeader className="p-4">
-          <TableRow>
-            <TableHead >PRODUCT</TableHead>
-            <TableHead>SKU / ID</TableHead>
-            <TableHead>PRICE</TableHead>
-            <TableHead  >CATEGORY</TableHead>
-            <TableHead className="flex flex-col" >STOCKLEVEL</TableHead>
-            <TableHead className="flex flex-col" >ACTION</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-           {products.map((product) => (
-            
-                            <TableRow key={product.name}>
-                              <TableCell className="flex items-center gap-2">
-                      {" "}
-                      <Avatar>
-                        <AvatarImage
-                          src={product.ProductImage}
-                          alt="@shadcn"
-                          className="grayscale rounded-xl "
-                        />
-                        <AvatarFallback className={"rounded-xl "}>
-                          {product.name.charAt(0).toUpperCase()}
-                        </AvatarFallback>
-                      </Avatar>
-                      <p>{product.name}</p>
-                    </TableCell>
-                              <TableCell>{product.sku}</TableCell>
-                              <TableCell>${product.price.toFixed(2)}</TableCell>
-                              {/* <TableCell>{product.sku}</TableCell> */}
-                              <TableCell>{product.stockLevel}</TableCell>
-                                <TableCell>{product.Category}</TableCell>
-                            <TableCell>{product.Action}</TableCell>
-                              </TableRow>
-                        ))}
-          </TableBody>
-      </Table>
-      <div>
-        <div className=" flex  flex-start   mt-4 rounded-lg   p-2 bg-muted-foreground/20 w-full gap-4">
-                         <Icon icon="ph:sparkle-bold" width="50" height="50"  className=" p-2 bg-primary/20"/>
+        <Table className="p-4">
+          <TableHeader className="p-4">
+            <TableRow>
+              <TableHead>PRODUCT</TableHead>
+              <TableHead>SKU / ID</TableHead>
+              <TableHead>PRICE</TableHead>
+              <TableHead>CATEGORY</TableHead>
+              <TableHead className="flex flex-col">STOCKLEVEL</TableHead>
+              <TableHead className="flex flex-col">ACTION</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {products.map((product) => (
+              <TableRow key={product.name}>
+                <TableCell className="flex items-center gap-2">
+                  {" "}
+                  <Avatar>
+                    <AvatarImage
+                      src={product.ProductImage}
+                      alt="@shadcn"
+                      className="grayscale rounded-xl "
+                    />
+                    <AvatarFallback className={"rounded-xl "}>
+                      {product.name.charAt(1).toUpperCase()}
+                    </AvatarFallback>
+                  </Avatar>
+                  <h1 className="flex flex-col ">
+                    {product.name}{" "}
+                    <span className="text-xs text-muted-foreground">
+                      {product.span}
+                    </span>
+                  </h1>
+                </TableCell>
+                <TableCell>{product.sku}</TableCell>
+                <TableCell>${product.price.toFixed(2)}</TableCell>
 
-                 
-              
-               <div className="flex flex-col items-center">
-                 <h1 className="text-sm   font-inter font-bold">
-               Inventory Intelligence
-                </h1>
-                <br />
-                <p className="text-xs text-muted-foreground pb-5 -mt-3">
-               AI suggests restocking 4 items based on next    sales forecast.
-                </p>
-               </div>
+                <TableCell>{product.stockLevel}</TableCell>
+                <TableCell>{product.Category}</TableCell>
+                <TableCell>{product.Action}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+        
+        <div>
+          <div className="flex items-center gap-4">
+            <div className="bg-primary/10 p-2.5 rounded-xl border border-primary/20">
+              <Icon
+                icon="ph:sparkle-bold"
+                className="text-primary"
+                width="22"
+              />
+            </div>
+            <div className="flex justify-between w-full"> 
               <div>
-                  <Link
-              href="/inventory/recommendations"
-              className="  flex   items-center justify-baseline  text-primary   ">
-                 Review Recommendations  <ArrowRightIcon />
-            </Link>
-              </div>
-              </div>
+              <h4 className="text-sm font-bold">Inventory Intelligence</h4>
+              <p className="text-xs text-muted-foreground">
+                AI suggests restocking 4 items based on next week s sales
+                forecast.
+              </p>
+            </div>
+          </div>
+          <Link
+            href="/inventory/recommendationeded"
+            className="text-xs font-bold text-primary flex items-center gap-2 hover:opacity-80"
+          >
+            Review Recommendations <ArrowRightIcon size={14} />
+          </Link></div>
+        </div>
       </div>
-      </div>
-      
     </>
   );
 }
